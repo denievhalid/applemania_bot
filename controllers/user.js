@@ -16,8 +16,10 @@ export async function register(phone, telegramId) {
 
       await User.create({ phone, telegramId });
 
+      const msg = `Добавился новый оптовик:<br/>${phone}`;
+
       await axios(
-        "https://api.telegram.org/bot5126338980:AAHWd2229p63w1PiX5yu94TBR3dFAEGVRWg/sendMessage?chat_id=1142646378&text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!"
+        `https://api.telegram.org/bot5126338980:AAHWd2229p63w1PiX5yu94TBR3dFAEGVRWg/sendMessage?chat_id=5002496163&text=${msg}&parse_mode=html`
       );
 
       return resolve("✅ Спасибо! Ваша заявка принята! ");
