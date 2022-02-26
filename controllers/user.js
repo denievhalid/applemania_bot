@@ -16,9 +16,9 @@ export async function register(phone, telegramId) {
 
       await User.create({ phone, telegramId });
 
-      await axios(
-        `https://api.telegram.org/bot5126338980:AAHWd2229p63w1PiX5yu94TBR3dFAEGVRWg/sendMessage?chat_id=5002496163&text=Добавился новый оптовик:\n${phone}&parse_mode=html`
-      );
+      await axios({
+        url: `https://api.telegram.org/bot5126338980:AAHWd2229p63w1PiX5yu94TBR3dFAEGVRWg/sendMessage?chat_id=5002496163&text=Добавился новый оптовик:\n${phone}&parse_mode=html`,
+      });
 
       return resolve("✅ Спасибо! Ваша заявка принята! ");
     } catch (e) {
