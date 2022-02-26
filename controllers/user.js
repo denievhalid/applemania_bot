@@ -11,8 +11,6 @@ export async function register(phone, telegramId) {
       });
 
       if (candidate) {
-        await sendInfo(phone);
-
         return resolve("🕐 Ваша заявка на рассмотрении");
       }
 
