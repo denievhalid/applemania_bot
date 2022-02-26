@@ -16,7 +16,7 @@ export async function register(phone, telegramId) {
 
       await User.create({ phone, telegramId });
 
-      const msg = `Добавился новый оптовик:<br/>${phone}`;
+      const msg = `Добавился новый оптовик:\n${phone}`;
 
       await axios(
         `https://api.telegram.org/bot5126338980:AAHWd2229p63w1PiX5yu94TBR3dFAEGVRWg/sendMessage?chat_id=5002496163&text=${msg}&parse_mode=html`
