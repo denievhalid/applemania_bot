@@ -4,6 +4,8 @@ import { register } from "./controllers/user";
 import { isAdmin } from "./functions";
 
 mongo().then(() => {
+  let addPost = false;
+
   bot.onText(/\/start/, ({ chat: { id }, from }) => {
     const keyboard = [];
     keyboard.push([
@@ -32,10 +34,18 @@ mongo().then(() => {
       from,
     } = msg;
 
+    addPost = true;
+
     bot.sendMessage(id, "Введите пост");
   });
 
   bot.on("message", ({ chat: { id, message }, contact, from }) => {
+    if (addPost) {
+      addPost = false;
+      bot.sendMessage(id, "thanks");
+      return;
+    }
+
     if (contact) {
       register(contact.phone_number, id).then((e) => {
         bot.sendMessage(id, e);
