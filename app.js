@@ -42,7 +42,7 @@ mongo().then(() => {
   bot.on("message", ({ chat: { id, message }, contact, from }) => {
     if (addPost) {
       addPost = false;
-      bot.sendMessage(id, "thanks");
+      bot.sendMessage(id, message);
       return;
     }
 
