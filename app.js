@@ -26,7 +26,16 @@ mongo().then(() => {
     );
   });
 
-  bot.on("message", ({ chat: { id }, contact, from }) => {
+  bot.onText(/^Написать пост/, (msg) => {
+    const {
+      chat: { id },
+      from,
+    } = msg;
+
+    bot.sendMessage(id, "Введите пост");
+  });
+
+  bot.on("message", ({ chat: { id, message }, contact, from }) => {
     if (contact) {
       register(contact.phone_number, id).then((e) => {
         bot.sendMessage(id, e);
