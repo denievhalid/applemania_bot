@@ -12,9 +12,9 @@ mongo().then(() => {
       { text: "⬆ Отправить номер телефона", request_contact: true },
     ]);
 
-    //if (isAdmin(id)) {
-    keyboard.push([{ text: "Написать пост" }]);
-    //}
+    if (isAdmin(id)) {
+      keyboard.push([{ text: "Написать пост" }]);
+    }
 
     bot.sendMessage(
       id,
@@ -39,15 +39,14 @@ mongo().then(() => {
     bot.sendMessage(id, "Введите пост");
   });
 
-  bot.on("message", ({ chat: { id, message }, contact, from }) => {
+  bot.on("message", ({ text, chat: { id }, contact, from }) => {
     if (addPost) {
       getAll().then((users) => {
         users.map((user) => {
-          bot.sendMessage(user, "123");
+          bot.sendMessage(user.telegramId, text);
         });
       });
       addPost = false;
-
       return;
     }
 

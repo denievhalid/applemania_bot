@@ -4,7 +4,7 @@ import axios from "axios";
 export async function getAll() {
   return new Promise(async (resolve, reject) => {
     try {
-      return resolve(await User.findOne({}));
+      return resolve(await User.find({}));
     } catch (e) {
       return reject("Неизвестная ошибка");
     }
