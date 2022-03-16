@@ -1,6 +1,16 @@
 import User from "../models/user";
 import axios from "axios";
 
+export async function getAll() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      return resolve(await User.findOne({}));
+    } catch (e) {
+      return reject("Неизвестная ошибка");
+    }
+  });
+}
+
 export async function register(phone, telegramId) {
   return new Promise(async (resolve, reject) => {
     try {
@@ -20,7 +30,6 @@ export async function register(phone, telegramId) {
 
       return resolve("✅ Спасибо! Ваша заявка принята! ");
     } catch (e) {
-      console.log(e);
       return reject("Неизвестная ошибка");
     }
   });

@@ -1,6 +1,6 @@
 import mongo from "./mongo";
 import bot from "./bot";
-import { register } from "./controllers/user";
+import { getAll, register } from "./controllers/user";
 import { isAdmin } from "./functions";
 
 mongo().then(() => {
@@ -41,8 +41,13 @@ mongo().then(() => {
 
   bot.on("message", ({ chat: { id, message }, contact, from }) => {
     if (addPost) {
+      getAll().then((users) => {
+        users.map((user) => {
+          bot.sendMessage(user, "123");
+        });
+      });
       addPost = false;
-      bot.sendMessage(id, "123");
+
       return;
     }
 
