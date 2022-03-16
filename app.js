@@ -20,9 +20,7 @@ mongo().then(() => {
       {
         reply_markup: {
           resize_keyboard: true,
-          keyboard: [
-            [{ text: "⬆ Отправить номер телефона 2", request_contact: true }],
-          ],
+          keyboard,
         },
       }
     );
