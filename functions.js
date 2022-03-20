@@ -1,3 +1,3 @@
 export function isAdmin(id) {
-  return id == "1142646378";
+  return id == "5002496163";
 }
